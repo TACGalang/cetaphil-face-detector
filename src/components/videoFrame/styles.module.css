@@ -1,0 +1,12 @@
+.rootContainer {
+	background-image: url("../../assets/videoFrame.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	width: 35vw;
+	height: 70vh;
+	justify-content: flex-start;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
