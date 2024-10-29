@@ -28,7 +28,7 @@ const router = createBrowserRouter([
 				element: <Camera />,
 			},
 			{
-				path: "result/:capturedImages",
+				path: "result/",
 				element: <Result />,
 			},
 		],

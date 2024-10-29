@@ -24,8 +24,8 @@ const Camera: React.FC = () => {
 	useEffect(() => {
 		// Load face-api models when the component mounts
 		// const loadModels = async () => {
-		// 	await faceapi.nets.tinyFaceDetector.loadFromUri("/models");
-		// 	await faceapi.nets.faceExpressionNet.loadFromUri("/models");
+		// await faceapi.nets.tinyFaceDetector.loadFromUri("/models");
+		// await faceapi.nets.faceExpressionNet.loadFromUri("/models");
 		// 	startVideo();
 		// };
 

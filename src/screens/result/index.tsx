@@ -1,15 +1,32 @@
-import { useParams } from "react-router-dom";
+import { useResult } from "./hooks";
+import { animated } from "@react-spring/web";
+
+import Button from "../../components/button";
 
 import styles from "./style.module.css";
+import NextButton from "../../assets/nextButton.png";
 import loadingImage from "../../assets/loading.png";
 
 const Result = () => {
-	const { capturedImages } = useParams();
-	console.log("TG>>> captured", capturedImages);
+	const { loading, countdownStyle, count, totalScore } = useResult();
 
 	return (
 		<div className={styles.background}>
-			<h1 className={styles.loadingText}>ANALYZING...</h1>
+			{totalScore ? (
+				<div className={styles.scoreContainer}>
+					<h1 className={styles.loadingText}>YOUR SCORE IS</h1>
+					<h1 className={styles.score}>{totalScore}</h1>
+					<Button source={NextButton} onPress={() => {}} />
+				</div>
+			) : (
+				<h1 className={styles.loadingText}>ANALYZING...</h1>
+			)}
+
+			{!loading && count > 0 && (
+				<animated.h1 style={countdownStyle} className={styles.countText}>
+					{count}
+				</animated.h1>
+			)}
 			<img src={loadingImage} alt="loading" className={styles.loading} />
 		</div>
 	);

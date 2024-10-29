@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import { useSpring } from "@react-spring/web";
+import { useStore } from "../../stores";
 
 export const useCamera = () => {
 	const navigate = useNavigate();
@@ -9,14 +10,14 @@ export const useCamera = () => {
 	const canvasRef = useRef<HTMLCanvasElement | null>(null);
 	const [capturedImages, setCapturedImage] = useState<string[]>([]);
 	const [count, setCount] = useState(0);
+	const { addImage } = useStore();
 
 	const { staticWindowSize } = useWindowSize();
 
 	useEffect(() => {
 		if (capturedImages.length === 3) {
 			videoRef.current?.pause();
-			// navigate(`/result/${capturedImages}`);
-			navigate("/result/hello");
+			navigate("/result/");
 		}
 	}, [capturedImages, navigate]);
 
@@ -45,6 +46,7 @@ export const useCamera = () => {
 				const imageUrl = canvasRef.current.toDataURL("image/png");
 				const capturedImgs = [...capturedImages];
 				capturedImgs.push(imageUrl);
+				addImage(imageUrl);
 
 				setCapturedImage(capturedImgs);
 			}
