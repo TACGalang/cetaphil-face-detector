@@ -19,7 +19,7 @@ const Start = () => {
 			) : (
 				<animated.div style={logoStyle} className={styles.contentContainer}>
 					<img src={logo} alt="logo" className={styles.logo} />
-					<Button source={startButton} onPress={() => onStart()} />
+					<Button source={startButton} isLarge onPress={() => onStart()} />
 				</animated.div>
 			)}
 		</div>

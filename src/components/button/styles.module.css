@@ -6,7 +6,19 @@
 	user-select: none;
 }
 
+.buttonContainerLarge {
+	width: 18vw;
+	height: 12vh;
+	transform: scale(1);
+	cursor: pointer;
+	user-select: none;
+}
+
 .buttonContainer:active {
+	transform: scale(0.95);
+}
+
+.buttonContainerLarge:active {
 	transform: scale(0.95);
 }
 
