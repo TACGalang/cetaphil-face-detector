@@ -2,8 +2,10 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import * as faceapi from "face-api.js";
 import { useSpring } from "@react-spring/web";
 import { useStore } from "../../stores";
+import { useNavigate } from "react-router-dom";
 
 export const useResult = () => {
+	const navigate = useNavigate();
 	const [loading, setLoading] = useState<boolean>(false);
 	const [count, setCount] = useState(0);
 	const { images } = useStore();
@@ -77,10 +79,15 @@ export const useResult = () => {
 		}
 	};
 
+	const onNext = () => {
+		navigate("/print/");
+	};
+
 	return {
 		loading,
 		count,
 		countdownStyle,
 		totalScore,
+		onNext,
 	};
 };

@@ -9,8 +9,7 @@ import NoButton from "../../assets/noButton.png";
 import YestButton from "../../assets/yesButton.png";
 
 const Print = () => {
-	const { goHome, reactToPrintFn, contentRef, imageToPrint, printStyle } =
-		usePrint();
+	const { goHome, print, contentRef, imageToPrint, printStyle } = usePrint();
 
 	return (
 		<div className={styles.background}>
@@ -22,7 +21,7 @@ const Print = () => {
 			</animated.div>
 			<div className={styles.cta}>
 				<Button source={NoButton} onPress={() => goHome()} />
-				<Button source={YestButton} onPress={() => reactToPrintFn()} />
+				<Button source={YestButton} onPress={() => print()} />
 			</div>
 		</div>
 	);

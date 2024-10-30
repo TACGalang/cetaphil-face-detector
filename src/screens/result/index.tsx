@@ -8,7 +8,7 @@ import NextButton from "../../assets/nextButton.png";
 import loadingImage from "../../assets/loading.png";
 
 const Result = () => {
-	const { loading, countdownStyle, count, totalScore } = useResult();
+	const { loading, countdownStyle, count, totalScore, onNext } = useResult();
 
 	return (
 		<div className={styles.background}>
@@ -16,7 +16,7 @@ const Result = () => {
 				<div className={styles.scoreContainer}>
 					<h1 className={styles.loadingText}>YOUR SCORE IS</h1>
 					<h1 className={styles.score}>{totalScore}</h1>
-					<Button source={NextButton} onPress={() => {}} />
+					<Button source={NextButton} onPress={() => onNext()} />
 				</div>
 			) : (
 				<h1 className={styles.loadingText}>ANALYZING...</h1>

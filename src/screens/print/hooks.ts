@@ -8,14 +8,20 @@ export const usePrint = () => {
 	const navigate = useNavigate();
 	const contentRef = useRef<HTMLDivElement>(null);
 	const reactToPrintFn = useReactToPrint({ contentRef });
-	const { images } = useStore();
+	const { images, clearImages } = useStore();
 
 	const imageToPrint = useMemo(() => {
 		return images.length > 0 ? images[images.length - 1] : undefined;
 	}, [images]);
 
 	const goHome = () => {
+		clearImages();
 		navigate("/");
+	};
+
+	const print = () => {
+		clearImages();
+		reactToPrintFn();
 	};
 
 	const printStyle = useSpring({
@@ -27,8 +33,8 @@ export const usePrint = () => {
 	return {
 		goHome,
 		contentRef,
-		reactToPrintFn,
 		imageToPrint,
 		printStyle,
+		print,
 	};
 };
