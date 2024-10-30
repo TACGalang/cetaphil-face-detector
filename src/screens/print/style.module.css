@@ -19,5 +19,10 @@
 
 .cta {
 	display: flex;
-	margin-top: 2rem;
+	margin-top: 3rem;
+}
+
+.headerText {
+	font-size: 3rem;
+	margin-bottom: 2rem;
 }

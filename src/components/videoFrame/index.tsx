@@ -7,12 +7,12 @@ import Overlay2 from "../../assets/overlay2.png";
 
 interface Props {
 	children: React.ReactNode;
-	hasOverlays: boolean;
+	ref?: React.RefObject<HTMLDivElement>;
 }
 
-const VideoFrame: React.FC<Props> = ({ children, hasOverlays }) => {
+const VideoFrame: React.FC<Props> = ({ children, ref }) => {
 	return (
-		<div className={styles.rootContainer}>
+		<div className={styles.rootContainer} ref={ref}>
 			<div className={styles.childContainer}>{children}</div>
 			<div className={styles.topDiv}>
 				<img src={Overlay1} alt="overlays" className={styles.overlay1} />

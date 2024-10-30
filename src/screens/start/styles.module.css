@@ -24,4 +24,5 @@
 	width: 65%;
 	object-fit: contain;
 	margin-bottom: 2rem;
+	user-select: none;
 }
