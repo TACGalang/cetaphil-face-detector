@@ -28,7 +28,7 @@ export const useWindowSize = () => {
 	}, []);
 
 	const isMobileWidth = useMemo(() => {
-		return windowSize.width < 1024;
+		return windowSize.width < 900;
 	}, [windowSize]);
 
 	return {
