@@ -3,10 +3,72 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
-	width: 35vw;
-	height: 70vh;
+	width: 32rem;
+	height: 35rem;
 	justify-content: flex-start;
 	align-items: center;
 	display: flex;
 	flex-direction: column;
+	gap: 1rem;
+}
+
+.overlays {
+	object-fit: contain;
+	width: 10rem;
+	height: 10rem;
+	user-select: none;
+}
+
+.childContainer {
+	width: 28rem;
+	height: 23rem;
+	margin-top: 2rem;
+	position: absolute;
+	background-color: aqua;
+}
+
+.overlay1 {
+	height: 9rem;
+	width: 9rem;
+	object-fit: contain;
+	z-index: 999;
+	user-select: none;
+}
+
+.overlay1Container {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	justify-content: flex-end;
+	margin-bottom: 20%;
+}
+
+.overlay2Container {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.topDiv {
+	display: flex;
+	flex: 1;
+	justify-content: flex-end;
+	width: 100%;
+}
+
+.centerDiv {
+	display: flex;
+	width: 100%;
+	justify-content: flex-start;
+	margin-bottom: -4rem;
+}
+
+.bottomDiv {
+	display: flex;
+	flex: 1;
+	width: 100%;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
 }

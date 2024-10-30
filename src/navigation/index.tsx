@@ -6,6 +6,7 @@ import Start from "../screens/start";
 import Instruction from "../screens/instructions";
 import Error from "../screens/error";
 import Result from "../screens/result";
+import Print from "..//screens/print";
 
 import styles from "./styles.module.css";
 
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "instruction/",
-				element: <Instruction />,
+				element: <Print />,
 			},
 			{
 				path: "camera/",
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
 			{
 				path: "result/",
 				element: <Result />,
+			},
+			{
+				path: "print/",
+				element: <Print />,
 			},
 		],
 	},
