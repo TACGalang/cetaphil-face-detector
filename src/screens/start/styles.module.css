@@ -26,3 +26,16 @@
 	margin-bottom: 2rem;
 	user-select: none;
 }
+
+.prompt {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+.promptText {
+	font-size: 3rem;
+	text-align: center;
+}

@@ -1,8 +1,11 @@
+import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSpring } from "@react-spring/web";
+import { useWindowSize } from "../../hooks/useWindowSize";
 
 export const useStart = () => {
 	const navigate = useNavigate();
+	const { isMobileWidth } = useWindowSize();
 
 	const onStart = () => {
 		navigate("instruction/");
@@ -17,5 +20,6 @@ export const useStart = () => {
 	return {
 		onStart,
 		logoStyle,
+		isMobileWidth,
 	};
 };
