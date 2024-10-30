@@ -1,4 +1,4 @@
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 import { useStore } from "../../stores";
@@ -7,7 +7,11 @@ import { useSpring } from "@react-spring/web";
 export const usePrint = () => {
 	const navigate = useNavigate();
 	const contentRef = useRef<HTMLDivElement>(null);
-	const reactToPrintFn = useReactToPrint({ contentRef });
+	const [finishPrinting, setFinishPrinting] = useState<boolean>(false);
+	const reactToPrintFn = useReactToPrint({
+		contentRef,
+		onAfterPrint: () => setFinishPrinting(true),
+	});
 	const { images, clearImages } = useStore();
 
 	const imageToPrint = useMemo(() => {
@@ -20,7 +24,6 @@ export const usePrint = () => {
 	};
 
 	const print = () => {
-		clearImages();
 		reactToPrintFn();
 	};
 
@@ -36,5 +39,6 @@ export const usePrint = () => {
 		imageToPrint,
 		printStyle,
 		print,
+		finishPrinting,
 	};
 };

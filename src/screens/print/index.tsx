@@ -7,9 +7,17 @@ import { animated } from "@react-spring/web";
 import styles from "./style.module.css";
 import NoButton from "../../assets/noButton.png";
 import YestButton from "../../assets/yesButton.png";
+import HomeButton from "../../assets/home.png";
 
 const Print = () => {
-	const { goHome, print, contentRef, imageToPrint, printStyle } = usePrint();
+	const {
+		goHome,
+		print,
+		contentRef,
+		imageToPrint,
+		printStyle,
+		finishPrinting,
+	} = usePrint();
 
 	return (
 		<div className={styles.background}>
@@ -20,7 +28,10 @@ const Print = () => {
 				</VideoFrame>
 			</animated.div>
 			<div className={styles.cta}>
-				<Button source={NoButton} onPress={() => goHome()} />
+				<Button
+					source={finishPrinting ? HomeButton : NoButton}
+					onPress={() => goHome()}
+				/>
 				<Button source={YestButton} onPress={() => print()} />
 			</div>
 		</div>

@@ -10,18 +10,19 @@ export const useResult = () => {
 	const [count, setCount] = useState(0);
 	const { images } = useStore();
 	const [scores, setScores] = useState<number[]>([]);
+	const [finishCounting, setFinishCounting] = useState<boolean>(false);
 
 	const totalScore = useMemo(() => {
 		console.log("TG>>> count, ", count);
 		console.log("TG>>> scores.le", scores);
-		if (scores.length > 0 && count <= 0) {
+		if (scores.length > 0 && count <= 0 && finishCounting) {
 			const sum = scores.reduce((acc, num) => acc + num, 0);
 			const total = sum / scores.length;
 			return total < 0.5 ? "50" : `${(total * 100).toFixed(2)}`;
 		} else {
 			return undefined;
 		}
-	}, [scores, count]);
+	}, [scores, count, finishCounting]);
 
 	useEffect(() => {
 		loadModels();
@@ -30,6 +31,9 @@ export const useResult = () => {
 	useEffect(() => {
 		if (count > 0) {
 			const timer = setTimeout(() => {
+				if (count <= 3) {
+					setFinishCounting(true);
+				}
 				setCount(count - 1);
 			}, 1000);
 			return () => clearTimeout(timer);

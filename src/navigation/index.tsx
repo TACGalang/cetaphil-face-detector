@@ -22,7 +22,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "instruction/",
-				element: <Instruction />,
+				element: <Print />,
 			},
 			{
 				path: "camera/",
