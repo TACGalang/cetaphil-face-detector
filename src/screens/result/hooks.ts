@@ -18,7 +18,7 @@ export const useResult = () => {
 		if (scores.length > 0 && count <= 0 && finishCounting) {
 			const sum = scores.reduce((acc, num) => acc + num, 0);
 			const total = sum / scores.length;
-			return total < 0.5 ? "50" : `${(total * 100).toFixed(2)}`;
+			return total < 0.5 ? "50" : `${(total * 100).toFixed()}`;
 		} else {
 			return undefined;
 		}
