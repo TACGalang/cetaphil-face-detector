@@ -19,6 +19,7 @@
 	object-fit: cover;
 	width: 26rem;
 	height: 37rem;
+	z-index: 1;
 }
 
 .overlays {
@@ -39,6 +40,7 @@
 	align-items: center;
 	width: 100vw;
 	height: 100vh;
+	z-index: 2;
 }
 
 .countDownText {

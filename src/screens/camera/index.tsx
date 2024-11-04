@@ -39,6 +39,7 @@ const Camera: React.FC = () => {
 						videoRef.current.srcObject = stream;
 						videoRef.current.onloadedmetadata = () => {
 							videoRef.current?.play();
+							updateFrameSize();
 						};
 					}
 				})
