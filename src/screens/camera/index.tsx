@@ -7,6 +7,7 @@ import { animated } from "@react-spring/web";
 import styles from "./styles.module.css";
 import captureButton from "../../assets/capturepng.png";
 import Button from "../../components/button";
+import Frame from "../../assets/photoFrame.png";
 
 const Camera: React.FC = () => {
 	const {
@@ -17,6 +18,7 @@ const Camera: React.FC = () => {
 		count,
 		countdownStyle,
 	} = useCamera();
+	const [frameStyle, setFrameStyle] = useState({});
 
 	// const [smiling, setSmiling] = useState<boolean>(false);
 	// const [smilePercent, setSmilyPercent] = useState<string>("");
@@ -50,6 +52,29 @@ const Camera: React.FC = () => {
 
 		// loadModels();
 	}, []);
+
+	useEffect(() => {
+		// Adjust frame size initially
+		updateFrameSize();
+
+		// Update frame size on window resize
+		window.addEventListener("resize", updateFrameSize);
+		return () => window.removeEventListener("resize", updateFrameSize);
+	}, []);
+
+	const updateFrameSize = () => {
+		if (videoRef.current) {
+			const rect = videoRef.current.getBoundingClientRect();
+			setFrameStyle({
+				position: "absolute",
+				top: rect.top,
+				left: rect.left,
+				width: `${rect.width}px`,
+				height: `${rect.height}px`,
+				zIndex: 9999,
+			});
+		}
+	};
 
 	// const handleVideoPlay = () => {
 	// 	const detectSmile = async () => {
@@ -85,14 +110,9 @@ const Camera: React.FC = () => {
 				autoPlay
 				muted
 				playsInline
-				width={
-					staticWindowSize.current ? staticWindowSize.current.width / 2 : 640
-				}
-				height={
-					staticWindowSize.current ? staticWindowSize.current.height / 2 : 480
-				}
 				className={styles.videoContainer}
 			/>
+			<img src={Frame} alt="photo-grame" style={frameStyle} />
 			<canvas ref={canvasRef} style={{ display: "none" }} />
 			<Button source={captureButton} onPress={() => captureImage()} />
 			{count > 0 && (
