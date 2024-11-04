@@ -11,10 +11,9 @@ export const useResult = () => {
 	const { images } = useStore();
 	const [scores, setScores] = useState<number[]>([]);
 	const [finishCounting, setFinishCounting] = useState<boolean>(false);
+	const [hasError, setError] = useState<boolean>(false);
 
 	const totalScore = useMemo(() => {
-		console.log("TG>>> count, ", count);
-		console.log("TG>>> scores.le", scores);
 		if (scores.length > 0 && count <= 0 && finishCounting) {
 			const sum = scores.reduce((acc, num) => acc + num, 0);
 			const total = sum / scores.length;
@@ -65,6 +64,7 @@ export const useResult = () => {
 
 	const detectSmile = async () => {
 		try {
+			const facesScore: number[] = [];
 			images.forEach(async (img) => {
 				const image = new Image();
 				image.src = img;
@@ -76,8 +76,14 @@ export const useResult = () => {
 					face.expressions.happy <= 1 ? face.expressions.happy : 0.5
 				);
 
-				setScores((currentScore) => [...currentScore, ...happyFaces]);
+				facesScore.push(...happyFaces);
 			});
+
+			if (facesScore.length > 0) {
+				setScores((currentScore) => [...currentScore, ...facesScore]);
+			} else {
+				setError(true);
+			}
 		} catch (error) {
 			console.log("TG>>> error", error);
 		}
@@ -87,11 +93,17 @@ export const useResult = () => {
 		navigate("/print/");
 	};
 
+	const goBack = () => {
+		navigate(-1);
+	};
+
 	return {
 		loading,
 		count,
 		countdownStyle,
 		totalScore,
 		onNext,
+		hasError,
+		goBack,
 	};
 };
