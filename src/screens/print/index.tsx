@@ -8,7 +8,7 @@ import styles from "./style.module.css";
 import NoButton from "../../assets/noButton.png";
 import YestButton from "../../assets/yesButton.png";
 import HomeButton from "../../assets/home.png";
-import PhotoFrame from "../../assets/photoFrame.png";
+import PhotoFrame from "../../assets/photoFrame4by6.png";
 import { url } from "inspector";
 
 const Print = () => {
@@ -30,8 +30,8 @@ const Print = () => {
 						backgroundImage: `url(${imageToPrint})`,
 						backgroundSize: "cover",
 						backgroundPosition: "center",
-						width: "26rem",
-						height: "37rem",
+						width: "48rem",
+						height: "32rem",
 					}}
 				>
 					<img

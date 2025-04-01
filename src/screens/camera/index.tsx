@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useCamera } from "./hooks";
-import * as faceapi from "face-api.js";
 
 import { animated } from "@react-spring/web";
 
 import styles from "./styles.module.css";
 import captureButton from "../../assets/capturepng.png";
 import Button from "../../components/button";
-import Frame from "../../assets/photoFrame.png";
+import Frame from "../../assets/photoFrame4by6.png";
 
 const Camera: React.FC = () => {
 	const {
